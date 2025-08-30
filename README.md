@@ -18,3 +18,4 @@ See `upgrade.yml` for radius per tier, `settings.yml` for particle density/perio
 - `/upgrades` GUI: Island Size & Team Size upgrades (config in `upgrade.yml`).
 - Team size upgrades use BentoBox per-island override (`setMaxMembers` for MEMBER_RANK).
 - `/rank top|me|recalc`: Ranking by island block value, including Pixelmon blocks if exposed via namespaced keys.
+Commit changes.
