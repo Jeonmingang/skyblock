@@ -22,16 +22,22 @@ jobs:
           java-version: '8'
           cache: maven
 
-      - name: Grant execute permission for Maven Wrapper
+      - name: Check wrapper files
+        run: |
+          test -f .mvn/wrapper/maven-wrapper.properties || (echo "missing wrapper props" && exit 1)
+          ls -la .mvn/wrapper || true
+
+      - name: Grant execute permission for mvnw
         run: chmod +x mvnw
 
-      - name: Build with Maven
-        run: ./mvnw -DskipTests clean package
+      - name: Build with Maven Wrapper (fix project dir)
+        run: ./mvnw -Dmaven.multiModuleProjectDirectory="$GITHUB_WORKSPACE" -DskipTests clean package
 
       - name: Upload plugin jar
         uses: actions/upload-artifact@v4
         with:
           name: SamSkyBridge
           path: target/*.jar
+
 
 
