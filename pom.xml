@@ -4,6 +4,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.signition</groupId>
@@ -11,22 +14,18 @@
   <version>0.2.0</version>
   <name>SamSkyBridge-WhiteBarrier</name>
   <description>BSkyBlock/BentoBox 연동 섬 업그레이드 + 흰색 방벽 표시 플러그인</description>
-  <url>https://github.com/Jeonmingang/skyblock</url>
 
   <properties>
-    <!-- Java 8 -->
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
     <maven.compiler.release>8</maven.compiler.release>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-    <!-- APIs -->
     <spigot.api.version>1.16.5-R0.1-SNAPSHOT</spigot.api.version>
     <bentobox.version>1.16.2</bentobox.version>
   </properties>
 
   <dependencies>
-    <!-- Spigot API (서버가 제공하므로 provided) -->
     <dependency>
       <groupId>org.spigotmc</groupId>
       <artifactId>spigot-api</artifactId>
@@ -34,7 +33,6 @@
       <scope>provided</scope>
     </dependency>
 
-    <!-- BentoBox Core (BSkyBlock 포함 서버에서 제공) -->
     <dependency>
       <groupId>world.bentobox</groupId>
       <artifactId>bentobox</artifactId>
@@ -42,7 +40,6 @@
       <scope>provided</scope>
     </dependency>
 
-    <!-- Vault API (경제/권한 연동용) - JitPack -->
     <dependency>
       <groupId>com.github.MilkBowl</groupId>
       <artifactId>VaultAPI</artifactId>
@@ -52,23 +49,20 @@
   </dependencies>
 
   <build>
-    <!-- 산출물 이름 고정 -->
     <finalName>SamSkyBridge-0.2.0</finalName>
 
-    <!-- resources: plugin.yml 및 기본 yml 포함 -->
     <resources>
       <resource>
         <directory>src/main/resources</directory>
         <includes>
-          <include>**/*.yml</include>
           <include>plugin.yml</include>
+          <include>**/*.yml</include>
         </includes>
         <filtering>false</filtering>
       </resource>
     </resources>
 
     <plugins>
-      <!-- Java 8 컴파일러 -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -81,7 +75,6 @@
         </configuration>
       </plugin>
 
-      <!-- (필요 시) 셰이딩: 현재 전부 provided라 굳이 리로케이션 없음 -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-shade-plugin</artifactId>
@@ -130,4 +123,3 @@
     </repository>
   </repositories>
 </project>
-
